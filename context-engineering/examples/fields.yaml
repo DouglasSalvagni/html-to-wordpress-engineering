@@ -1,0 +1,670 @@
+# Exemplo de Arquivo de Campos Customizados
+# Define todos os campos personalizados (meta boxes/ACF) necessários
+
+# Configurações gerais
+config:
+  framework: "meta_box" # meta_box, acf, cmb2
+  prefix: "corp_" # Prefixo para todos os campos
+  text_domain: "corporativo-pro"
+
+# Grupos de campos para páginas
+page_fields:
+  # Campos da página inicial
+  front_page:
+    title: "Configurações da Página Inicial"
+    post_types: ["page"]
+    context: "normal"
+    priority: "high"
+    condition:
+      - field: "page_template"
+        operator: "=="
+        value: "front-page.php"
+    fields:
+      # Seção Hero
+      hero_section:
+        type: "group"
+        label: "Seção Hero"
+        fields:
+          hero_title:
+            type: "text"
+            label: "Título Principal"
+            placeholder: "Digite o título principal"
+            required: true
+            default: "Bem-vindos à Nossa Empresa"
+            
+          hero_subtitle:
+            type: "textarea"
+            label: "Subtítulo"
+            placeholder: "Digite o subtítulo"
+            rows: 3
+            default: "Soluções inovadoras para o seu negócio"
+            
+          hero_background_image:
+            type: "image"
+            label: "Imagem de Fundo"
+            return_format: "array"
+            preview_size: "medium"
+            library: "all"
+            
+          hero_cta_text:
+            type: "text"
+            label: "Texto do Botão"
+            placeholder: "Ex: Saiba Mais"
+            default: "Conheça Nossos Serviços"
+            
+          hero_cta_link:
+            type: "link"
+            label: "Link do Botão"
+            return_format: "array"
+            
+          hero_video_url:
+            type: "url"
+            label: "URL do Vídeo (Opcional)"
+            placeholder: "https://youtube.com/watch?v=..."
+            
+      # Seção Sobre
+      about_section:
+        type: "group"
+        label: "Seção Sobre"
+        fields:
+          about_title:
+            type: "text"
+            label: "Título da Seção"
+            default: "Sobre Nossa Empresa"
+            
+          about_content:
+            type: "wysiwyg"
+            label: "Conteúdo"
+            toolbar: "full"
+            media_upload: true
+            
+          about_image:
+            type: "image"
+            label: "Imagem da Seção"
+            return_format: "array"
+            
+          about_stats:
+            type: "repeater"
+            label: "Estatísticas"
+            button_label: "Adicionar Estatística"
+            min: 0
+            max: 4
+            layout: "table"
+            sub_fields:
+              stat_number:
+                type: "number"
+                label: "Número"
+                required: true
+                
+              stat_label:
+                type: "text"
+                label: "Rótulo"
+                required: true
+                
+              stat_suffix:
+                type: "text"
+                label: "Sufixo"
+                placeholder: "Ex: +, %, anos"
+                
+      # Seção Serviços
+      services_section:
+        type: "group"
+        label: "Seção Serviços"
+        fields:
+          services_title:
+            type: "text"
+            label: "Título da Seção"
+            default: "Nossos Serviços"
+            
+          services_subtitle:
+            type: "textarea"
+            label: "Subtítulo"
+            rows: 2
+            
+          services_items:
+            type: "repeater"
+            label: "Serviços"
+            button_label: "Adicionar Serviço"
+            min: 1
+            max: 6
+            layout: "block"
+            sub_fields:
+              service_icon:
+                type: "select"
+                label: "Ícone"
+                choices:
+                  "fas fa-laptop-code": "Desenvolvimento"
+                  "fas fa-mobile-alt": "Mobile"
+                  "fas fa-chart-line": "Marketing"
+                  "fas fa-shield-alt": "Segurança"
+                  "fas fa-cloud": "Cloud"
+                  "fas fa-cogs": "Automação"
+                default_value: "fas fa-laptop-code"
+                
+              service_title:
+                type: "text"
+                label: "Título do Serviço"
+                required: true
+                
+              service_description:
+                type: "textarea"
+                label: "Descrição"
+                rows: 3
+                required: true
+                
+              service_link:
+                type: "link"
+                label: "Link (Opcional)"
+                return_format: "array"
+                
+      # Seção Depoimentos
+      testimonials_section:
+        type: "group"
+        label: "Seção Depoimentos"
+        fields:
+          testimonials_title:
+            type: "text"
+            label: "Título da Seção"
+            default: "O Que Nossos Clientes Dizem"
+            
+          testimonials_background:
+            type: "image"
+            label: "Imagem de Fundo"
+            return_format: "array"
+            
+          show_testimonials:
+            type: "true_false"
+            label: "Exibir Depoimentos"
+            default_value: true
+            ui: true
+            
+  # Campos da página sobre
+  about_page:
+    title: "Configurações da Página Sobre"
+    post_types: ["page"]
+    context: "normal"
+    priority: "high"
+    condition:
+      - field: "page_template"
+        operator: "=="
+        value: "page-about.php"
+    fields:
+      company_history:
+        type: "group"
+        label: "História da Empresa"
+        fields:
+          history_title:
+            type: "text"
+            label: "Título"
+            default: "Nossa História"
+            
+          history_content:
+            type: "wysiwyg"
+            label: "Conteúdo"
+            
+          timeline:
+            type: "repeater"
+            label: "Linha do Tempo"
+            button_label: "Adicionar Marco"
+            layout: "block"
+            sub_fields:
+              year:
+                type: "number"
+                label: "Ano"
+                required: true
+                min: 1900
+                max: 2030
+                
+              title:
+                type: "text"
+                label: "Título do Marco"
+                required: true
+                
+              description:
+                type: "textarea"
+                label: "Descrição"
+                rows: 3
+                
+      team_section:
+        type: "group"
+        label: "Seção Equipe"
+        fields:
+          team_title:
+            type: "text"
+            label: "Título da Seção"
+            default: "Nossa Equipe"
+            
+          team_members:
+            type: "repeater"
+            label: "Membros da Equipe"
+            button_label: "Adicionar Membro"
+            layout: "block"
+            sub_fields:
+              member_photo:
+                type: "image"
+                label: "Foto"
+                return_format: "array"
+                required: true
+                
+              member_name:
+                type: "text"
+                label: "Nome"
+                required: true
+                
+              member_position:
+                type: "text"
+                label: "Cargo"
+                required: true
+                
+              member_bio:
+                type: "textarea"
+                label: "Biografia"
+                rows: 4
+                
+              member_social:
+                type: "group"
+                label: "Redes Sociais"
+                fields:
+                  linkedin:
+                    type: "url"
+                    label: "LinkedIn"
+                    
+                  twitter:
+                    type: "url"
+                    label: "Twitter"
+                    
+                  email:
+                    type: "email"
+                    label: "E-mail"
+
+# Campos para Custom Post Types
+cpt_fields:
+  # Campos do Portfolio
+  portfolio:
+    title: "Detalhes do Projeto"
+    post_types: ["portfolio"]
+    context: "normal"
+    priority: "high"
+    fields:
+      project_details:
+        type: "group"
+        label: "Detalhes do Projeto"
+        fields:
+          client_name:
+            type: "text"
+            label: "Nome do Cliente"
+            required: true
+            
+          project_date:
+            type: "date_picker"
+            label: "Data do Projeto"
+            display_format: "d/m/Y"
+            return_format: "Y-m-d"
+            
+          project_url:
+            type: "url"
+            label: "URL do Projeto"
+            placeholder: "https://"
+            
+          project_duration:
+            type: "text"
+            label: "Duração"
+            placeholder: "Ex: 3 meses"
+            
+          project_budget:
+            type: "select"
+            label: "Orçamento"
+            choices:
+              "small": "Pequeno (até R$ 10k)"
+              "medium": "Médio (R$ 10k - 50k)"
+              "large": "Grande (R$ 50k+)"
+            
+          technologies_used:
+            type: "checkbox"
+            label: "Tecnologias Utilizadas"
+            choices:
+              "html": "HTML5"
+              "css": "CSS3"
+              "js": "JavaScript"
+              "php": "PHP"
+              "wordpress": "WordPress"
+              "react": "React"
+              "vue": "Vue.js"
+              "laravel": "Laravel"
+            layout: "horizontal"
+            
+      project_gallery:
+        type: "group"
+        label: "Galeria do Projeto"
+        fields:
+          gallery_images:
+            type: "gallery"
+            label: "Imagens da Galeria"
+            return_format: "array"
+            preview_size: "medium"
+            library: "all"
+            min: 1
+            max: 20
+            
+          featured_video:
+            type: "oembed"
+            label: "Vídeo em Destaque"
+            
+      project_results:
+        type: "group"
+        label: "Resultados do Projeto"
+        fields:
+          results_description:
+            type: "wysiwyg"
+            label: "Descrição dos Resultados"
+            
+          metrics:
+            type: "repeater"
+            label: "Métricas"
+            button_label: "Adicionar Métrica"
+            layout: "table"
+            sub_fields:
+              metric_label:
+                type: "text"
+                label: "Métrica"
+                required: true
+                
+              metric_value:
+                type: "text"
+                label: "Valor"
+                required: true
+                
+              metric_improvement:
+                type: "number"
+                label: "Melhoria (%)"
+                min: 0
+                max: 1000
+                
+  # Campos dos Depoimentos
+  testimonials:
+    title: "Informações do Depoimento"
+    post_types: ["testimonials"]
+    context: "normal"
+    priority: "high"
+    fields:
+      client_info:
+        type: "group"
+        label: "Informações do Cliente"
+        fields:
+          client_name:
+            type: "text"
+            label: "Nome do Cliente"
+            required: true
+            
+          client_position:
+            type: "text"
+            label: "Cargo"
+            
+          client_company:
+            type: "text"
+            label: "Empresa"
+            
+          client_photo:
+            type: "image"
+            label: "Foto do Cliente"
+            return_format: "array"
+            
+          client_website:
+            type: "url"
+            label: "Site da Empresa"
+            
+      testimonial_content:
+        type: "group"
+        label: "Conteúdo do Depoimento"
+        fields:
+          testimonial_text:
+            type: "textarea"
+            label: "Depoimento"
+            required: true
+            rows: 5
+            
+          rating:
+            type: "range"
+            label: "Avaliação"
+            min: 1
+            max: 5
+            step: 1
+            default_value: 5
+            
+          project_type:
+            type: "select"
+            label: "Tipo de Projeto"
+            choices:
+              "website": "Website"
+              "ecommerce": "E-commerce"
+              "app": "Aplicativo"
+              "branding": "Branding"
+              "marketing": "Marketing Digital"
+            
+          featured:
+            type: "true_false"
+            label: "Destacar Depoimento"
+            default_value: false
+            ui: true
+
+# Campos globais (opções do tema)
+global_fields:
+  theme_options:
+    title: "Opções do Tema"
+    menu_title: "Opções do Tema"
+    menu_slug: "theme-options"
+    capability: "manage_options"
+    position: 30
+    fields:
+      # Configurações gerais
+      general_settings:
+        type: "tab"
+        label: "Configurações Gerais"
+        
+      site_logo:
+        type: "image"
+        label: "Logo do Site"
+        return_format: "array"
+        instructions: "Recomendado: 200x60px, formato SVG ou PNG"
+        
+      site_logo_footer:
+        type: "image"
+        label: "Logo do Rodapé"
+        return_format: "array"
+        
+      favicon:
+        type: "image"
+        label: "Favicon"
+        return_format: "url"
+        instructions: "Formato ICO, 32x32px"
+        
+      # Configurações de contato
+      contact_settings:
+        type: "tab"
+        label: "Informações de Contato"
+        
+      company_info:
+        type: "group"
+        label: "Informações da Empresa"
+        fields:
+          company_name:
+            type: "text"
+            label: "Nome da Empresa"
+            
+          company_address:
+            type: "textarea"
+            label: "Endereço"
+            rows: 3
+            
+          company_phone:
+            type: "text"
+            label: "Telefone"
+            
+          company_email:
+            type: "email"
+            label: "E-mail"
+            
+          company_hours:
+            type: "textarea"
+            label: "Horário de Funcionamento"
+            rows: 3
+            
+      # Redes sociais
+      social_settings:
+        type: "tab"
+        label: "Redes Sociais"
+        
+      social_links:
+        type: "group"
+        label: "Links das Redes Sociais"
+        fields:
+          facebook:
+            type: "url"
+            label: "Facebook"
+            
+          instagram:
+            type: "url"
+            label: "Instagram"
+            
+          twitter:
+            type: "url"
+            label: "Twitter"
+            
+          linkedin:
+            type: "url"
+            label: "LinkedIn"
+            
+          youtube:
+            type: "url"
+            label: "YouTube"
+            
+          whatsapp:
+            type: "text"
+            label: "WhatsApp"
+            placeholder: "5511999999999"
+            
+      # Configurações de SEO
+      seo_settings:
+        type: "tab"
+        label: "SEO"
+        
+      google_analytics:
+        type: "text"
+        label: "Google Analytics ID"
+        placeholder: "GA_MEASUREMENT_ID"
+        
+      google_tag_manager:
+        type: "text"
+        label: "Google Tag Manager ID"
+        placeholder: "GTM-XXXXXXX"
+        
+      facebook_pixel:
+        type: "text"
+        label: "Facebook Pixel ID"
+        
+      # Configurações de performance
+      performance_settings:
+        type: "tab"
+        label: "Performance"
+        
+      enable_lazy_loading:
+        type: "true_false"
+        label: "Ativar Lazy Loading"
+        default_value: true
+        ui: true
+        
+      minify_css:
+        type: "true_false"
+        label: "Minificar CSS"
+        default_value: false
+        ui: true
+        
+      minify_js:
+        type: "true_false"
+        label: "Minificar JavaScript"
+        default_value: false
+        ui: true
+        
+      # Configurações do rodapé
+      footer_settings:
+        type: "tab"
+        label: "Rodapé"
+        
+      footer_text:
+        type: "wysiwyg"
+        label: "Texto do Rodapé"
+        toolbar: "basic"
+        media_upload: false
+        
+      show_back_to_top:
+        type: "true_false"
+        label: "Mostrar Botão 'Voltar ao Topo'"
+        default_value: true
+        ui: true
+        
+      footer_background_color:
+        type: "color_picker"
+        label: "Cor de Fundo do Rodapé"
+        default_value: "#333333"
+
+# Configurações de validação
+validation:
+  required_fields:
+    - "hero_title"
+    - "hero_subtitle"
+    - "services_title"
+    - "client_name"
+    - "testimonial_text"
+    
+  field_formats:
+    email:
+      pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+      message: "Por favor, insira um e-mail válido"
+      
+    phone:
+      pattern: "^\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$"
+      message: "Formato: (11) 99999-9999"
+      
+    url:
+      pattern: "^https?://.*"
+      message: "URL deve começar com http:// ou https://"
+
+# Configurações de exibição
+display:
+  conditional_logic:
+    show_video_section:
+      field: "hero_video_url"
+      operator: "!="
+      value: ""
+      
+    show_testimonials_slider:
+      field: "show_testimonials"
+      operator: "=="
+      value: true
+      
+  field_groups:
+    basic:
+      - "hero_section"
+      - "about_section"
+      
+    advanced:
+      - "services_section"
+      - "testimonials_section"
+      - "team_section"
+
+# Configurações de importação/exportação
+import_export:
+  export_format: "json"
+  include_media: true
+  backup_before_import: true
+  
+# Notas para desenvolvimento
+notes:
+  - "Todos os campos devem ter labels em português"
+  - "Usar validação client-side quando possível"
+  - "Implementar preview em tempo real no customizer"
+  - "Campos de imagem devem suportar WebP"
+  - "Considerar lazy loading para campos de mídia"
+  - "Implementar cache para campos complexos"
+  - "Adicionar tooltips para campos avançados"
+  - "Suporte a múltiplos idiomas nos labels"

@@ -1,0 +1,397 @@
+/*
+Theme Name: {{theme_name}} Block
+Description: Tema WordPress convertido de site estático - Modo Block-Native (FSE)
+Version: 1.0.0
+Author: {{author_name}}
+Text Domain: {{text_domain}}
+Domain Path: /languages
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: block-patterns, block-styles, custom-colors, custom-spacing, custom-units, editor-style, featured-images, full-site-editing, one-column, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks
+*/
+
+/*
+ * Font smoothing.
+ * This is a niche setting that will not be available via Global Styles.
+ * https://github.com/WordPress/gutenberg/issues/35934
+ */
+
+body {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Text selection colors.
+ * This is a niche setting that will not be available via Global Styles.
+ * https://github.com/WordPress/gutenberg/issues/35934
+ */
+
+::selection {
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--background);
+}
+
+/*
+ * Link styles.
+ * https://github.com/WordPress/gutenberg/issues/42319
+ */
+
+a {
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.25ch;
+}
+
+a:hover,
+a:focus {
+	text-decoration-style: dashed;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+/*
+ * Navigation Block
+ * Reset the padding from List block
+ */
+
+.wp-block-navigation ul {
+	padding: unset;
+}
+
+/*
+ * Pull quote Block
+ */
+
+.wp-block-pullquote blockquote::before {
+	content: '"';
+	font-size: 2em;
+	line-height: 1;
+}
+
+.wp-block-pullquote blockquote::after {
+	content: '"';
+	font-size: 2em;
+	line-height: 1;
+}
+
+/*
+ * Quote Block
+ */
+
+.wp-block-quote::before {
+	content: '"';
+	font-size: 2em;
+	line-height: 1;
+}
+
+.wp-block-quote::after {
+	content: '"';
+	font-size: 2em;
+	line-height: 1;
+}
+
+/*
+ * Search Block
+ */
+
+.wp-block-search__button {
+	margin-left: 0.625rem;
+}
+
+/*
+ * Button Block
+ */
+
+.wp-block-button__link {
+	border-radius: 0.33rem;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+	padding: 0.667rem 1.333rem;
+}
+
+.wp-block-button__link:hover {
+	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	transform: translateY(1px);
+}
+
+/*
+ * File Block
+ */
+
+.wp-block-file__button {
+	border-radius: 0.33rem;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.wp-block-file__button:hover {
+	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	transform: translateY(1px);
+}
+
+/*
+ * Latest Posts Block
+ */
+
+.wp-block-latest-posts__post-author,
+.wp-block-latest-posts__post-date {
+	font-size: var(--wp--preset--font-size--small);
+}
+
+/*
+ * Latest Comments Block
+ */
+
+.wp-block-latest-comments__comment-author,
+.wp-block-latest-comments__comment-date {
+	font-size: var(--wp--preset--font-size--small);
+}
+
+/*
+ * Post Author Block
+ */
+
+.wp-block-post-author__byline,
+.wp-block-post-author__bio {
+	font-size: var(--wp--preset--font-size--small);
+}
+
+/*
+ * Post Date Block
+ */
+
+.wp-block-post-date {
+	font-size: var(--wp--preset--font-size--small);
+}
+
+/*
+ * Post Terms Block
+ */
+
+.wp-block-post-terms {
+	font-size: var(--wp--preset--font-size--small);
+}
+
+/*
+ * Post Navigation Link Block
+ */
+
+.wp-block-post-navigation-link .wp-block-post-navigation-link__label {
+	font-weight: bold;
+}
+
+/*
+ * Spacer Block
+ */
+
+.wp-block-spacer {
+	min-height: 1.25rem;
+}
+
+/*
+ * Table Block
+ */
+
+.wp-block-table {
+	border-collapse: collapse;
+}
+
+.wp-block-table thead {
+	border-bottom: 3px solid;
+}
+
+.wp-block-table tfoot {
+	border-top: 3px solid;
+}
+
+.wp-block-table td,
+.wp-block-table th {
+	border: 1px solid;
+	padding: 0.5em;
+}
+
+/*
+ * Verse Block
+ */
+
+.wp-block-verse {
+	font-family: monospace, monospace;
+}
+
+/*
+ * Video Block
+ */
+
+.wp-block-video {
+	position: relative;
+}
+
+/*
+ * Image Block
+ */
+
+.wp-block-image {
+	margin-bottom: 1.25rem;
+}
+
+.wp-block-image figcaption {
+	color: var(--wp--preset--color--foreground);
+	font-size: var(--wp--preset--font-size--small);
+	margin-bottom: 0;
+	margin-top: 0.5rem;
+	text-align: center;
+}
+
+/*
+ * Gallery Block
+ */
+
+.wp-block-gallery figcaption {
+	color: var(--wp--preset--color--foreground);
+	font-size: var(--wp--preset--font-size--small);
+	margin-bottom: 0;
+	margin-top: 0.5rem;
+	text-align: center;
+}
+
+/*
+ * Audio Block
+ */
+
+.wp-block-audio figcaption {
+	color: var(--wp--preset--color--foreground);
+	font-size: var(--wp--preset--font-size--small);
+	margin-bottom: 0;
+	margin-top: 0.5rem;
+	text-align: center;
+}
+
+/*
+ * Embed Block
+ */
+
+.wp-block-embed figcaption {
+	color: var(--wp--preset--color--foreground);
+	font-size: var(--wp--preset--font-size--small);
+	margin-bottom: 0;
+	margin-top: 0.5rem;
+	text-align: center;
+}
+
+/*
+ * Code Block
+ */
+
+.wp-block-code {
+	border-radius: 0.25rem;
+	font-family: Menlo, Consolas, monaco, monospace;
+	font-size: var(--wp--preset--font-size--small);
+	padding: 1.25rem;
+}
+
+/*
+ * Preformatted Block
+ */
+
+.wp-block-preformatted {
+	font-family: Menlo, Consolas, monaco, monospace;
+	font-size: var(--wp--preset--font-size--small);
+	padding: 1.25rem;
+}
+
+/*
+ * Pullquote Block
+ */
+
+.wp-block-pullquote {
+	border-left: 0.25rem solid;
+	border-right: 0.25rem solid;
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+}
+
+/*
+ * Cover Block
+ */
+
+.wp-block-cover {
+	min-height: 50vh;
+}
+
+/*
+ * Social Links Block
+ */
+
+.wp-block-social-links {
+	gap: 0.5rem;
+}
+
+/*
+ * Custom CSS for theme-specific styling
+ */
+
+/* Container and Layout */
+.wp-site-blocks {
+	padding-left: var(--wp--style--root--padding-left);
+	padding-right: var(--wp--style--root--padding-right);
+}
+
+/* Header customizations */
+.wp-block-template-part[data-area="header"] {
+	position: sticky;
+	top: 0;
+	z-index: 999;
+	background: var(--wp--preset--color--background);
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Footer customizations */
+.wp-block-template-part[data-area="footer"] {
+	margin-top: auto;
+}
+
+/* Post content spacing */
+.wp-block-post-content > * + * {
+	margin-top: var(--wp--preset--spacing--medium);
+}
+
+/* Comments styling */
+.wp-block-comments {
+	margin-top: var(--wp--preset--spacing--large);
+}
+
+.wp-block-comment-template {
+	margin-top: var(--wp--preset--spacing--medium);
+}
+
+/* Archive and blog styling */
+.wp-block-query {
+	margin-top: var(--wp--preset--spacing--large);
+}
+
+.wp-block-post-template {
+	gap: var(--wp--preset--spacing--large);
+}
+
+/* Responsive utilities */
+@media (max-width: 781px) {
+	.wp-block-columns {
+		flex-direction: column;
+	}
+	
+	.wp-block-column {
+		flex-basis: 100% !important;
+	}
+}
+
+/* Print styles */
+@media print {
+	.wp-block-navigation,
+	.wp-block-search,
+	.wp-block-social-links {
+		display: none;
+	}
+}

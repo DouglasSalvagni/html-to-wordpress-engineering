@@ -1,0 +1,530 @@
+{
+  "environments": {
+    "development": {
+      "name": "Development",
+      "description": "Ambiente de desenvolvimento local",
+      "active": true,
+      
+      "wordpress": {
+        "debug": true,
+        "debugLog": true,
+        "debugDisplay": true,
+        "scriptDebug": true,
+        "savequeries": true,
+        "cacheEnabled": false
+      },
+      
+      "database": {
+        "host": "localhost",
+        "port": 3306,
+        "charset": "utf8mb4",
+        "collate": "utf8mb4_unicode_ci",
+        "tablePrefix": "wp_"
+      },
+      
+      "server": {
+        "url": "http://localhost",
+        "port": 80,
+        "ssl": false,
+        "php": {
+          "version": "8.1",
+          "memoryLimit": "256M",
+          "maxExecutionTime": 300,
+          "errorReporting": "E_ALL",
+          "displayErrors": true
+        }
+      },
+      
+      "build": {
+        "minification": false,
+        "sourceMap": true,
+        "watch": true,
+        "hotReload": true,
+        "optimization": false
+      },
+      
+      "logging": {
+        "level": "debug",
+        "console": true,
+        "file": true,
+        "queries": true,
+        "performance": true
+      },
+      
+      "security": {
+        "strictMode": false,
+        "corsEnabled": true,
+        "allowedOrigins": ["*"],
+        "csrfProtection": false
+      },
+      
+      "tools": {
+        "browserSync": {
+          "enabled": true,
+          "proxy": "localhost",
+          "port": 3000,
+          "ui": {
+            "port": 3001
+          }
+        },
+        "webpack": {
+          "mode": "development",
+          "devtool": "eval-source-map",
+          "watch": true
+        },
+        "sass": {
+          "outputStyle": "expanded",
+          "sourceMap": true
+        }
+      }
+    },
+    
+    "staging": {
+      "name": "Staging",
+      "description": "Ambiente de homologação",
+      "active": false,
+      
+      "wordpress": {
+        "debug": true,
+        "debugLog": true,
+        "debugDisplay": false,
+        "scriptDebug": false,
+        "savequeries": false,
+        "cacheEnabled": true
+      },
+      
+      "database": {
+        "host": "staging-db.example.com",
+        "port": 3306,
+        "charset": "utf8mb4",
+        "collate": "utf8mb4_unicode_ci",
+        "tablePrefix": "wp_"
+      },
+      
+      "server": {
+        "url": "https://staging.example.com",
+        "port": 443,
+        "ssl": true,
+        "php": {
+          "version": "8.1",
+          "memoryLimit": "512M",
+          "maxExecutionTime": 120,
+          "errorReporting": "E_ERROR | E_WARNING",
+          "displayErrors": false
+        }
+      },
+      
+      "build": {
+        "minification": true,
+        "sourceMap": false,
+        "watch": false,
+        "hotReload": false,
+        "optimization": true
+      },
+      
+      "logging": {
+        "level": "info",
+        "console": false,
+        "file": true,
+        "queries": false,
+        "performance": true
+      },
+      
+      "security": {
+        "strictMode": true,
+        "corsEnabled": false,
+        "allowedOrigins": ["https://staging.example.com"],
+        "csrfProtection": true
+      },
+      
+      "tools": {
+        "browserSync": {
+          "enabled": false
+        },
+        "webpack": {
+          "mode": "production",
+          "devtool": false,
+          "watch": false
+        },
+        "sass": {
+          "outputStyle": "compressed",
+          "sourceMap": false
+        }
+      }
+    },
+    
+    "production": {
+      "name": "Production",
+      "description": "Ambiente de produção",
+      "active": false,
+      
+      "wordpress": {
+        "debug": false,
+        "debugLog": false,
+        "debugDisplay": false,
+        "scriptDebug": false,
+        "savequeries": false,
+        "cacheEnabled": true
+      },
+      
+      "database": {
+        "host": "prod-db.example.com",
+        "port": 3306,
+        "charset": "utf8mb4",
+        "collate": "utf8mb4_unicode_ci",
+        "tablePrefix": "wp_"
+      },
+      
+      "server": {
+        "url": "https://example.com",
+        "port": 443,
+        "ssl": true,
+        "php": {
+          "version": "8.1",
+          "memoryLimit": "512M",
+          "maxExecutionTime": 60,
+          "errorReporting": "E_ERROR",
+          "displayErrors": false
+        }
+      },
+      
+      "build": {
+        "minification": true,
+        "sourceMap": false,
+        "watch": false,
+        "hotReload": false,
+        "optimization": true
+      },
+      
+      "logging": {
+        "level": "error",
+        "console": false,
+        "file": true,
+        "queries": false,
+        "performance": false
+      },
+      
+      "security": {
+        "strictMode": true,
+        "corsEnabled": false,
+        "allowedOrigins": ["https://example.com"],
+        "csrfProtection": true
+      },
+      
+      "tools": {
+        "browserSync": {
+          "enabled": false
+        },
+        "webpack": {
+          "mode": "production",
+          "devtool": false,
+          "watch": false
+        },
+        "sass": {
+          "outputStyle": "compressed",
+          "sourceMap": false
+        }
+      }
+    },
+    
+    "testing": {
+      "name": "Testing",
+      "description": "Ambiente de testes automatizados",
+      "active": false,
+      
+      "wordpress": {
+        "debug": true,
+        "debugLog": true,
+        "debugDisplay": true,
+        "scriptDebug": true,
+        "savequeries": true,
+        "cacheEnabled": false
+      },
+      
+      "database": {
+        "host": "localhost",
+        "port": 3306,
+        "charset": "utf8mb4",
+        "collate": "utf8mb4_unicode_ci",
+        "tablePrefix": "wp_test_"
+      },
+      
+      "server": {
+        "url": "http://localhost:8080",
+        "port": 8080,
+        "ssl": false,
+        "php": {
+          "version": "8.1",
+          "memoryLimit": "512M",
+          "maxExecutionTime": 300,
+          "errorReporting": "E_ALL",
+          "displayErrors": true
+        }
+      },
+      
+      "build": {
+        "minification": false,
+        "sourceMap": true,
+        "watch": false,
+        "hotReload": false,
+        "optimization": false
+      },
+      
+      "logging": {
+        "level": "debug",
+        "console": true,
+        "file": true,
+        "queries": true,
+        "performance": true
+      },
+      
+      "security": {
+        "strictMode": false,
+        "corsEnabled": true,
+        "allowedOrigins": ["*"],
+        "csrfProtection": false
+      },
+      
+      "tools": {
+        "browserSync": {
+          "enabled": false
+        },
+        "webpack": {
+          "mode": "development",
+          "devtool": "eval-source-map",
+          "watch": false
+        },
+        "sass": {
+          "outputStyle": "expanded",
+          "sourceMap": true
+        }
+      }
+    }
+  },
+  
+  "global": {
+    "timezone": "America/Sao_Paulo",
+    "locale": "pt_BR",
+    "charset": "UTF-8",
+    
+    "paths": {
+      "themes": "wp-content/themes",
+      "plugins": "wp-content/plugins",
+      "uploads": "wp-content/uploads",
+      "cache": "wp-content/cache",
+      "logs": "wp-content/logs"
+    },
+    
+    "limits": {
+      "maxUploadSize": "64M",
+      "maxPostSize": "64M",
+      "maxInputVars": 3000,
+      "maxExecutionTime": 300
+    },
+    
+    "features": {
+      "multisite": false,
+      "xmlrpc": false,
+      "fileEditing": false,
+      "cron": true,
+      "revisions": {
+        "enabled": true,
+        "limit": 5
+      },
+      "autosave": {
+        "enabled": true,
+        "interval": 60
+      }
+    },
+    
+    "performance": {
+      "objectCache": {
+        "enabled": false,
+        "type": "redis",
+        "host": "localhost",
+        "port": 6379
+      },
+      "opcache": {
+        "enabled": true,
+        "memoryConsumption": 128,
+        "maxAcceleratedFiles": 4000
+      },
+      "compression": {
+        "gzip": true,
+        "brotli": false
+      }
+    },
+    
+    "security": {
+      "salts": {
+        "autoGenerate": true,
+        "length": 64
+      },
+      "loginAttempts": {
+        "enabled": true,
+        "maxAttempts": 5,
+        "lockoutTime": 900
+      },
+      "filePermissions": {
+        "files": "644",
+        "directories": "755",
+        "wpConfig": "600"
+      },
+      "headers": {
+        "xFrameOptions": "SAMEORIGIN",
+        "xContentTypeOptions": "nosniff",
+        "xXssProtection": "1; mode=block",
+        "referrerPolicy": "strict-origin-when-cross-origin"
+      }
+    },
+    
+    "backup": {
+      "enabled": true,
+      "schedule": "daily",
+      "retention": 30,
+      "include": {
+        "database": true,
+        "files": true,
+        "themes": true,
+        "plugins": true,
+        "uploads": false
+      },
+      "exclude": [
+        "wp-content/cache/*",
+        "wp-content/logs/*",
+        "node_modules/*",
+        "vendor/*"
+      ]
+    }
+  },
+  
+  "validation": {
+    "required": {
+      "php": {
+        "minVersion": "7.4",
+        "extensions": [
+          "mysqli",
+          "gd",
+          "curl",
+          "zip",
+          "mbstring",
+          "xml",
+          "json"
+        ]
+      },
+      "mysql": {
+        "minVersion": "5.7",
+        "charset": "utf8mb4"
+      },
+      "server": {
+        "webServer": ["apache", "nginx"],
+        "ssl": "recommended",
+        "modRewrite": true
+      }
+    },
+    
+    "recommended": {
+      "php": {
+        "version": "8.1",
+        "memoryLimit": "512M",
+        "extensions": [
+          "imagick",
+          "opcache",
+          "redis",
+          "memcached"
+        ]
+      },
+      "mysql": {
+        "version": "8.0",
+        "engine": "InnoDB"
+      },
+      "server": {
+        "http2": true,
+        "compression": true,
+        "caching": true
+      }
+    }
+  },
+  
+  "monitoring": {
+    "enabled": true,
+    "metrics": {
+      "performance": {
+        "pageLoadTime": true,
+        "databaseQueries": true,
+        "memoryUsage": true,
+        "cacheHitRatio": true
+      },
+      "errors": {
+        "phpErrors": true,
+        "wordpressErrors": true,
+        "javascriptErrors": true,
+        "404Errors": true
+      },
+      "security": {
+        "loginAttempts": true,
+        "fileChanges": true,
+        "malwareScans": false
+      }
+    },
+    
+    "alerts": {
+      "email": {
+        "enabled": true,
+        "recipients": ["admin@example.com"],
+        "threshold": "error"
+      },
+      "slack": {
+        "enabled": false,
+        "webhook": "",
+        "channel": "#alerts"
+      }
+    },
+    
+    "reporting": {
+      "daily": true,
+      "weekly": true,
+      "monthly": true,
+      "format": "html"
+    }
+  },
+  
+  "deployment": {
+    "strategy": "blue-green",
+    "rollback": {
+      "enabled": true,
+      "automatic": false,
+      "healthCheck": true
+    },
+    
+    "hooks": {
+      "preDeploy": [
+        "composer install --no-dev --optimize-autoloader",
+        "npm ci --production",
+        "npm run build"
+      ],
+      "postDeploy": [
+        "wp cache flush",
+        "wp rewrite flush",
+        "wp cron event run --due-now"
+      ],
+      "rollback": [
+        "wp cache flush",
+        "wp rewrite flush"
+      ]
+    },
+    
+    "healthCheck": {
+      "enabled": true,
+      "url": "/health",
+      "timeout": 30,
+      "retries": 3,
+      "checks": [
+        "database",
+        "cache",
+        "filesystem",
+        "external-apis"
+      ]
+    }
+  }
+}

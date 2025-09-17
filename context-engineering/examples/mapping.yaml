@@ -1,0 +1,514 @@
+# Exemplo de Arquivo de Mapeamento
+# Este arquivo define como o HTML estático será convertido para WordPress
+
+# Informações básicas do projeto
+project:
+  name: "Site Corporativo Exemplo"
+  description: "Conversão de site estático para WordPress"
+  version: "1.0.0"
+  author: "Desenvolvedor"
+  url: "https://exemplo.com"
+
+# Configurações do tema
+theme:
+  name: "Corporativo Pro"
+  slug: "corporativo-pro"
+  text_domain: "corporativo-pro"
+  version: "1.0.0"
+  description: "Tema corporativo moderno e responsivo"
+  author: "Sua Empresa"
+  author_uri: "https://suaempresa.com"
+  theme_uri: "https://exemplo.com"
+  license: "GPL v2 or later"
+  license_uri: "https://www.gnu.org/licenses/gpl-2.0.html"
+  tags:
+    - "business"
+    - "corporate"
+    - "responsive"
+    - "elementor"
+  requires_wp: "5.0"
+  tested_up_to: "6.4"
+  requires_php: "7.4"
+  type: "classic" # classic ou block
+
+# Mapeamento de páginas HTML para templates WordPress
+pages:
+  # Página inicial
+  index.html:
+    template: "front-page.php"
+    title: "Página Inicial"
+    content_type: "page"
+    is_front_page: true
+    sections:
+      - hero
+      - services
+      - about
+      - testimonials
+      - contact
+    
+  # Página sobre
+  about.html:
+    template: "page-about.php"
+    title: "Sobre Nós"
+    content_type: "page"
+    slug: "sobre-nos"
+    sections:
+      - hero
+      - company_history
+      - team
+      - values
+    
+  # Página de serviços
+  services.html:
+    template: "page-services.php"
+    title: "Nossos Serviços"
+    content_type: "page"
+    slug: "servicos"
+    sections:
+      - hero
+      - services_grid
+      - process
+      - cta
+    
+  # Blog
+  blog.html:
+    template: "home.php"
+    title: "Blog"
+    content_type: "page"
+    slug: "blog"
+    is_posts_page: true
+    
+  # Post individual do blog
+  blog-post.html:
+    template: "single.php"
+    content_type: "post"
+    sections:
+      - post_header
+      - post_content
+      - post_meta
+      - related_posts
+      - comments
+    
+  # Página de contato
+  contact.html:
+    template: "page-contact.php"
+    title: "Contato"
+    content_type: "page"
+    slug: "contato"
+    sections:
+      - hero
+      - contact_form
+      - contact_info
+      - map
+    
+  # Portfólio
+  portfolio.html:
+    template: "archive-portfolio.php"
+    title: "Portfólio"
+    content_type: "portfolio"
+    is_cpt_archive: true
+    
+  # Item do portfólio
+  portfolio-item.html:
+    template: "single-portfolio.php"
+    content_type: "portfolio"
+    sections:
+      - project_gallery
+      - project_details
+      - project_description
+      - related_projects
+
+# Custom Post Types identificados
+custom_post_types:
+  portfolio:
+    labels:
+      name: "Portfólio"
+      singular_name: "Projeto"
+      menu_name: "Portfólio"
+      add_new: "Adicionar Projeto"
+      add_new_item: "Adicionar Novo Projeto"
+      edit_item: "Editar Projeto"
+      new_item: "Novo Projeto"
+      view_item: "Ver Projeto"
+      search_items: "Buscar Projetos"
+      not_found: "Nenhum projeto encontrado"
+      not_found_in_trash: "Nenhum projeto na lixeira"
+    args:
+      public: true
+      has_archive: true
+      menu_icon: "dashicons-portfolio"
+      supports:
+        - "title"
+        - "editor"
+        - "thumbnail"
+        - "excerpt"
+        - "custom-fields"
+      rewrite:
+        slug: "portfolio"
+        with_front: false
+    
+  testimonials:
+    labels:
+      name: "Depoimentos"
+      singular_name: "Depoimento"
+      menu_name: "Depoimentos"
+      add_new: "Adicionar Depoimento"
+      add_new_item: "Adicionar Novo Depoimento"
+      edit_item: "Editar Depoimento"
+      new_item: "Novo Depoimento"
+      view_item: "Ver Depoimento"
+      search_items: "Buscar Depoimentos"
+      not_found: "Nenhum depoimento encontrado"
+      not_found_in_trash: "Nenhum depoimento na lixeira"
+    args:
+      public: false
+      show_ui: true
+      menu_icon: "dashicons-format-quote"
+      supports:
+        - "title"
+        - "editor"
+        - "thumbnail"
+      rewrite: false
+
+# Taxonomias customizadas
+taxonomies:
+  portfolio_category:
+    post_types:
+      - "portfolio"
+    labels:
+      name: "Categorias do Portfólio"
+      singular_name: "Categoria do Portfólio"
+      menu_name: "Categorias"
+      add_new_item: "Adicionar Nova Categoria"
+      edit_item: "Editar Categoria"
+      update_item: "Atualizar Categoria"
+      search_items: "Buscar Categorias"
+      not_found: "Nenhuma categoria encontrada"
+    args:
+      hierarchical: true
+      public: true
+      rewrite:
+        slug: "portfolio-categoria"
+        with_front: false
+  
+  portfolio_tag:
+    post_types:
+      - "portfolio"
+    labels:
+      name: "Tags do Portfólio"
+      singular_name: "Tag do Portfólio"
+      menu_name: "Tags"
+      add_new_item: "Adicionar Nova Tag"
+      edit_item: "Editar Tag"
+      update_item: "Atualizar Tag"
+      search_items: "Buscar Tags"
+      not_found: "Nenhuma tag encontrada"
+    args:
+      hierarchical: false
+      public: true
+      rewrite:
+        slug: "portfolio-tag"
+        with_front: false
+
+# Componentes reutilizáveis identificados
+components:
+  hero:
+    type: "section"
+    description: "Seção hero com título, subtítulo e CTA"
+    fields:
+      - "hero_title"
+      - "hero_subtitle"
+      - "hero_background_image"
+      - "hero_cta_text"
+      - "hero_cta_link"
+    template_part: "template-parts/sections/hero.php"
+    
+  services_grid:
+    type: "section"
+    description: "Grid de serviços com ícones e descrições"
+    fields:
+      - "services_title"
+      - "services_items"
+    template_part: "template-parts/sections/services-grid.php"
+    
+  testimonials_slider:
+    type: "section"
+    description: "Slider de depoimentos"
+    fields:
+      - "testimonials_title"
+      - "testimonials_items"
+    template_part: "template-parts/sections/testimonials.php"
+    
+  contact_form:
+    type: "section"
+    description: "Formulário de contato"
+    fields:
+      - "form_title"
+      - "form_description"
+      - "form_shortcode"
+    template_part: "template-parts/sections/contact-form.php"
+    
+  team_grid:
+    type: "section"
+    description: "Grid da equipe"
+    fields:
+      - "team_title"
+      - "team_members"
+    template_part: "template-parts/sections/team.php"
+
+# Menus identificados
+menus:
+  primary:
+    name: "Menu Principal"
+    description: "Menu principal do site"
+    location: "primary"
+    items:
+      - label: "Início"
+        url: "/"
+        type: "page"
+      - label: "Sobre"
+        url: "/sobre-nos"
+        type: "page"
+      - label: "Serviços"
+        url: "/servicos"
+        type: "page"
+      - label: "Portfólio"
+        url: "/portfolio"
+        type: "cpt_archive"
+      - label: "Blog"
+        url: "/blog"
+        type: "page"
+      - label: "Contato"
+        url: "/contato"
+        type: "page"
+  
+  footer:
+    name: "Menu do Rodapé"
+    description: "Menu secundário no rodapé"
+    location: "footer"
+    items:
+      - label: "Política de Privacidade"
+        url: "/politica-privacidade"
+        type: "page"
+      - label: "Termos de Uso"
+        url: "/termos-uso"
+        type: "page"
+      - label: "Sitemap"
+        url: "/sitemap"
+        type: "page"
+
+# Widgets identificados
+widgets:
+  sidebar_primary:
+    name: "Sidebar Principal"
+    description: "Sidebar da página de blog e posts"
+    location: "sidebar-1"
+    
+  footer_1:
+    name: "Rodapé - Coluna 1"
+    description: "Primeira coluna do rodapé"
+    location: "footer-1"
+    
+  footer_2:
+    name: "Rodapé - Coluna 2"
+    description: "Segunda coluna do rodapé"
+    location: "footer-2"
+    
+  footer_3:
+    name: "Rodapé - Coluna 3"
+    description: "Terceira coluna do rodapé"
+    location: "footer-3"
+
+# Assets identificados
+assets:
+  css:
+    main:
+      source: "css/style.css"
+      dependencies: []
+      version: "1.0.0"
+      media: "all"
+    
+    responsive:
+      source: "css/responsive.css"
+      dependencies: ["main"]
+      version: "1.0.0"
+      media: "all"
+      
+  js:
+    main:
+      source: "js/main.js"
+      dependencies: ["jquery"]
+      version: "1.0.0"
+      in_footer: true
+      
+    navigation:
+      source: "js/navigation.js"
+      dependencies: ["jquery"]
+      version: "1.0.0"
+      in_footer: true
+      
+  images:
+    logo:
+      source: "images/logo.svg"
+      alt: "Logo da Empresa"
+      
+    favicon:
+      source: "images/favicon.ico"
+      
+    placeholder:
+      source: "images/placeholder.jpg"
+      alt: "Imagem placeholder"
+
+# Configurações do Customizer
+customizer:
+  sections:
+    site_identity:
+      title: "Identidade do Site"
+      priority: 20
+      settings:
+        - "site_logo"
+        - "site_description"
+        
+    colors:
+      title: "Cores"
+      priority: 30
+      settings:
+        - "primary_color"
+        - "secondary_color"
+        - "accent_color"
+        
+    typography:
+      title: "Tipografia"
+      priority: 40
+      settings:
+        - "body_font"
+        - "heading_font"
+        - "font_size"
+        
+    layout:
+      title: "Layout"
+      priority: 50
+      settings:
+        - "container_width"
+        - "sidebar_position"
+        
+    footer:
+      title: "Rodapé"
+      priority: 60
+      settings:
+        - "footer_text"
+        - "show_social_links"
+        - "footer_background_color"
+
+# Integrações identificadas
+integrations:
+  contact_form_7:
+    enabled: true
+    forms:
+      - name: "Formulário de Contato"
+        shortcode: "[contact-form-7 id='1' title='Contato']"
+        
+  elementor:
+    enabled: true
+    widgets:
+      - "hero_widget"
+      - "services_widget"
+      - "testimonials_widget"
+      - "team_widget"
+    theme_builder:
+      header: true
+      footer: true
+      single: true
+      archive: true
+      
+  yoast_seo:
+    enabled: true
+    breadcrumbs: true
+    
+  google_analytics:
+    enabled: true
+    tracking_id: "GA_TRACKING_ID"
+
+# Configurações de performance
+performance:
+  lazy_loading:
+    enabled: true
+    images: true
+    iframes: true
+    
+  minification:
+    css: true
+    js: true
+    
+  caching:
+    browser_cache: true
+    object_cache: false
+    
+  optimization:
+    remove_query_strings: true
+    disable_emojis: true
+    remove_wp_version: true
+    
+  critical_css:
+    enabled: true
+    above_fold: true
+
+# Configurações de SEO
+seo:
+  meta_tags:
+    description: true
+    keywords: false
+    og_tags: true
+    twitter_cards: true
+    
+  structured_data:
+    organization: true
+    website: true
+    breadcrumbs: true
+    
+  sitemap:
+    enabled: true
+    include_images: true
+    
+  robots_txt:
+    enabled: true
+    custom_rules: []
+
+# Configurações de acessibilidade
+accessibility:
+  skip_links: true
+  aria_labels: true
+  alt_texts: true
+  keyboard_navigation: true
+  color_contrast: "AA"
+  focus_indicators: true
+
+# Configurações de segurança
+security:
+  disable_file_editing: true
+  hide_wp_version: true
+  disable_xmlrpc: true
+  security_headers: true
+  login_protection: true
+  upload_restrictions: true
+
+# Configurações de backup
+backup:
+  enabled: false
+  frequency: "daily"
+  retention: 30
+  include_uploads: true
+  include_database: true
+
+# Notas e observações
+notes:
+  - "Site possui design responsivo moderno"
+  - "Utiliza grid CSS para layouts"
+  - "Animações CSS sutis em hover"
+  - "Formulário de contato funcional"
+  - "Slider de depoimentos com JavaScript"
+  - "Menu mobile com hamburger"
+  - "Otimizado para SEO"
+  - "Compatível com Elementor Pro"
+  - "Suporte a múltiplos idiomas preparado"
+  - "Performance otimizada"

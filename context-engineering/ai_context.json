@@ -1,0 +1,69 @@
+{
+  "project": {
+    "name": "{{proj_name}}",
+    "slug": "{{proj_slug}}",
+    "mode": "builder-friendly",
+    "text_domain": "{{proj_slug}}",
+    "author": "{{author}}",
+    "author_url": "{{author_url}}",
+    "repo_url": "{{repo_url}}"
+  },
+  "objectives": [
+    "Converter HTML/CSS/JS para tema WordPress padronizado",
+    "Manter acessibilidade e alto desempenho",
+    "Garantir compatibilidade com Elementor e Meta Box",
+    "Seguir padrões de segurança WordPress",
+    "Implementar i18n/L10n adequado"
+  ],
+  "constraints": {
+    "no_inline_assets": true,
+    "enqueue_all_assets": true,
+    "prefix": "{{proj_slug}}_",
+    "php_min": "8.1",
+    "wp_min": "6.5",
+    "remove_wp_bloat": true,
+    "security_headers": true
+  },
+  "mapping_contract": {
+    "input_directory": "/input_static/",
+    "output_directory": "/wp-content/themes/{{proj_slug}}/",
+    "output_files": [
+      "mappings/mapping.yaml",
+      "mappings/fields.yaml"
+    ],
+    "require_checklists": [
+      "qa/checklist-acessibilidade.md",
+      "qa/checklist-performance.md",
+      "qa/checklist-wp.md"
+    ]
+  },
+  "plugin_compatibility": {
+    "elementor": {
+      "enabled": true,
+      "page_template": "page-elementor.php",
+      "disable_theme_styles": true
+    },
+    "meta_box": {
+      "enabled": true,
+      "export_format": "yaml"
+    },
+    "yoast_seo": {
+      "enabled": true,
+      "breadcrumbs": false
+    }
+  },
+  "performance": {
+    "critical_css": true,
+    "defer_js": true,
+    "preload_fonts": true,
+    "lazy_images": true,
+    "remove_emoji_scripts": true
+  },
+  "accessibility": {
+    "wcag_level": "AA",
+    "skip_links": true,
+    "focus_management": true,
+    "aria_labels": true,
+    "semantic_html": true
+  }
+}

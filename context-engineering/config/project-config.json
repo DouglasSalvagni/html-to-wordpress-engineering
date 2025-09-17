@@ -1,0 +1,538 @@
+{
+  "project": {
+    "name": "WordPress Creator",
+    "version": "1.0.0",
+    "description": "Sistema de criação automática de temas WordPress usando IA",
+    "author": "WordPress Creator Team",
+    "license": "MIT",
+    "repository": "https://github.com/your-org/wordpress-creator",
+    "created": "2024-01-01",
+    "updated": "2024-01-01"
+  },
+  
+  "wordpress": {
+    "minVersion": "6.0",
+    "testedUpTo": "6.4",
+    "requiresPHP": "7.4",
+    "textDomain": "wordpress-creator",
+    "domainPath": "/languages",
+    "network": false,
+    "updateURI": false
+  },
+  
+  "theme": {
+    "types": {
+      "classic": {
+        "enabled": true,
+        "description": "Tema WordPress clássico com PHP templates",
+        "requiredFiles": [
+          "style.css",
+          "index.php",
+          "functions.php"
+        ],
+        "recommendedFiles": [
+          "header.php",
+          "footer.php",
+          "single.php",
+          "page.php",
+          "archive.php",
+          "search.php",
+          "404.php",
+          "comments.php"
+        ],
+        "directories": [
+          "assets",
+          "inc",
+          "template-parts",
+          "languages"
+        ]
+      },
+      "block": {
+        "enabled": true,
+        "description": "Tema WordPress block-native (FSE)",
+        "requiredFiles": [
+          "style.css",
+          "index.php",
+          "theme.json"
+        ],
+        "recommendedFiles": [
+          "functions.php",
+          "templates/index.html",
+          "templates/single.html",
+          "templates/page.html",
+          "templates/archive.html",
+          "templates/search.html",
+          "templates/404.html"
+        ],
+        "directories": [
+          "assets",
+          "templates",
+          "parts",
+          "patterns",
+          "languages"
+        ]
+      }
+    },
+    
+    "features": {
+      "postThumbnails": true,
+      "titleTag": true,
+      "customLogo": true,
+      "customBackground": true,
+      "customHeader": false,
+      "html5": [
+        "search-form",
+        "comment-form",
+        "comment-list",
+        "gallery",
+        "caption"
+      ],
+      "postFormats": [
+        "aside",
+        "gallery",
+        "link",
+        "image",
+        "quote",
+        "status",
+        "video",
+        "audio",
+        "chat"
+      ],
+      "customizer": true,
+      "widgets": true,
+      "menus": true
+    },
+    
+    "defaults": {
+      "textDomain": "{{theme_slug}}",
+      "version": "1.0.0",
+      "author": "WordPress Creator",
+      "authorURI": "https://wordpress-creator.com",
+      "description": "Um tema WordPress moderno e responsivo criado com WordPress Creator.",
+      "tags": [
+        "custom-background",
+        "custom-logo",
+        "custom-menu",
+        "featured-images",
+        "threaded-comments",
+        "translation-ready",
+        "responsive-layout",
+        "accessibility-ready"
+      ],
+      "license": "GPL v2 or later",
+      "licenseURI": "https://www.gnu.org/licenses/gpl-2.0.html"
+    }
+  },
+  
+  "ai": {
+    "prompts": {
+      "directory": "./prompts",
+      "sequence": [
+        "00-bootstrap",
+        "10-analysis",
+        "20-planning",
+        "30-structure",
+        "40-templates",
+        "50-styling",
+        "60-functionality",
+        "70-optimization",
+        "80-testing",
+        "90-qa-release"
+      ],
+      "context": {
+        "maxTokens": 8000,
+        "temperature": 0.7,
+        "model": "gpt-4"
+      }
+    },
+    
+    "analysis": {
+      "htmlParser": {
+        "enabled": true,
+        "extractComponents": true,
+        "identifyPatterns": true,
+        "generateMapping": true
+      },
+      "designAnalysis": {
+        "colorExtraction": true,
+        "typographyAnalysis": true,
+        "layoutDetection": true,
+        "responsiveBreakpoints": true
+      }
+    }
+  },
+  
+  "build": {
+    "tools": {
+      "sass": {
+        "enabled": true,
+        "inputDir": "src/scss",
+        "outputDir": "assets/css",
+        "outputStyle": "compressed",
+        "sourceMap": false
+      },
+      "javascript": {
+        "enabled": true,
+        "inputDir": "src/js",
+        "outputDir": "assets/js",
+        "minify": true,
+        "sourceMap": false
+      },
+      "images": {
+        "enabled": true,
+        "inputDir": "src/images",
+        "outputDir": "assets/images",
+        "optimization": true,
+        "formats": ["jpg", "png", "svg", "webp"]
+      }
+    },
+    
+    "watch": {
+      "enabled": true,
+      "files": [
+        "src/**/*",
+        "templates/**/*",
+        "parts/**/*"
+      ],
+      "ignore": [
+        "node_modules/**",
+        "vendor/**",
+        ".git/**"
+      ]
+    },
+    
+    "output": {
+      "directory": "dist",
+      "zip": true,
+      "cleanup": true,
+      "exclude": [
+        "src/**",
+        "node_modules/**",
+        "vendor/**",
+        ".git/**",
+        ".gitignore",
+        "package.json",
+        "package-lock.json",
+        "composer.json",
+        "composer.lock",
+        "webpack.config.js",
+        "gulpfile.js",
+        "*.md"
+      ]
+    }
+  },
+  
+  "validation": {
+    "phpcs": {
+      "enabled": true,
+      "standard": "WordPress",
+      "extensions": "php",
+      "ignore": "vendor/*,node_modules/*"
+    },
+    
+    "themeCheck": {
+      "enabled": true,
+      "strict": false,
+      "checkSecurity": true,
+      "checkPerformance": true,
+      "checkAccessibility": true
+    },
+    
+    "w3c": {
+      "enabled": true,
+      "validateHTML": true,
+      "validateCSS": true
+    },
+    
+    "lighthouse": {
+      "enabled": true,
+      "performance": 90,
+      "accessibility": 95,
+      "bestPractices": 90,
+      "seo": 90
+    }
+  },
+  
+  "security": {
+    "sanitization": {
+      "enforceEscaping": true,
+      "requireNonces": true,
+      "validateInputs": true,
+      "preventSQLInjection": true
+    },
+    
+    "headers": {
+      "contentSecurityPolicy": true,
+      "xFrameOptions": "SAMEORIGIN",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin"
+    },
+    
+    "fileProtection": {
+      "htaccess": true,
+      "indexFiles": true,
+      "sensitiveFiles": [
+        ".env",
+        "config.php",
+        "wp-config.php"
+      ]
+    }
+  },
+  
+  "performance": {
+    "optimization": {
+      "minifyCSS": true,
+      "minifyJS": true,
+      "optimizeImages": true,
+      "lazyLoading": true,
+      "criticalCSS": false
+    },
+    
+    "caching": {
+      "browserCache": true,
+      "gzip": true,
+      "expires": {
+        "css": "1 year",
+        "js": "1 year",
+        "images": "1 year",
+        "fonts": "1 year"
+      }
+    },
+    
+    "cdn": {
+      "enabled": false,
+      "provider": "",
+      "domains": []
+    }
+  },
+  
+  "accessibility": {
+    "standards": {
+      "wcag": "2.1",
+      "level": "AA",
+      "skipLinks": true,
+      "focusManagement": true
+    },
+    
+    "features": {
+      "altText": true,
+      "ariaLabels": true,
+      "semanticHTML": true,
+      "colorContrast": true,
+      "keyboardNavigation": true
+    },
+    
+    "testing": {
+      "axe": true,
+      "wave": true,
+      "lighthouse": true
+    }
+  },
+  
+  "internationalization": {
+    "textDomain": "{{theme_slug}}",
+    "domainPath": "/languages",
+    "languages": [
+      "en_US",
+      "pt_BR",
+      "es_ES",
+      "fr_FR",
+      "de_DE"
+    ],
+    
+    "rtl": {
+      "enabled": true,
+      "languages": [
+        "ar",
+        "he",
+        "fa"
+      ]
+    },
+    
+    "tools": {
+      "potGeneration": true,
+      "poEditor": false,
+      "wpml": false,
+      "polylang": false
+    }
+  },
+  
+  "compatibility": {
+    "plugins": {
+      "woocommerce": {
+        "enabled": true,
+        "templates": true,
+        "styling": true
+      },
+      "elementor": {
+        "enabled": true,
+        "customWidgets": false,
+        "themeBuilder": true
+      },
+      "yoastSEO": {
+        "enabled": true,
+        "breadcrumbs": true,
+        "schema": true
+      },
+      "contactForm7": {
+        "enabled": true,
+        "styling": true
+      },
+      "gutenberg": {
+        "enabled": true,
+        "customBlocks": false,
+        "blockPatterns": true,
+        "blockStyles": true
+      }
+    },
+    
+    "browsers": {
+      "chrome": ">= 90",
+      "firefox": ">= 88",
+      "safari": ">= 14",
+      "edge": ">= 90",
+      "ie": false
+    }
+  },
+  
+  "testing": {
+    "environments": {
+      "local": {
+        "url": "http://localhost",
+        "wordpress": "latest",
+        "php": "8.1"
+      },
+      "staging": {
+        "url": "https://staging.example.com",
+        "wordpress": "latest",
+        "php": "8.1"
+      },
+      "production": {
+        "url": "https://example.com",
+        "wordpress": "latest",
+        "php": "8.1"
+      }
+    },
+    
+    "automation": {
+      "phpunit": false,
+      "codeception": false,
+      "playwright": false,
+      "cypress": false
+    },
+    
+    "devices": {
+      "mobile": {
+        "width": 375,
+        "height": 667
+      },
+      "tablet": {
+        "width": 768,
+        "height": 1024
+      },
+      "desktop": {
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  },
+  
+  "deployment": {
+    "methods": {
+      "ftp": {
+        "enabled": false,
+        "host": "",
+        "username": "",
+        "password": "",
+        "path": "/wp-content/themes/"
+      },
+      "git": {
+        "enabled": true,
+        "repository": "",
+        "branch": "main",
+        "autoCommit": false
+      },
+      "wp-cli": {
+        "enabled": true,
+        "commands": [
+          "theme install",
+          "theme activate"
+        ]
+      }
+    },
+    
+    "hooks": {
+      "preDeploy": [
+        "npm run build",
+        "composer install --no-dev"
+      ],
+      "postDeploy": [
+        "wp cache flush"
+      ]
+    }
+  },
+  
+  "documentation": {
+    "generate": {
+      "readme": true,
+      "changelog": true,
+      "api": false,
+      "userGuide": true
+    },
+    
+    "formats": {
+      "markdown": true,
+      "html": false,
+      "pdf": false
+    },
+    
+    "sections": {
+      "installation": true,
+      "configuration": true,
+      "customization": true,
+      "troubleshooting": true,
+      "faq": true,
+      "support": true
+    }
+  },
+  
+  "logging": {
+    "enabled": true,
+    "level": "info",
+    "file": "logs/wordpress-creator.log",
+    "rotation": {
+      "enabled": true,
+      "maxSize": "10MB",
+      "maxFiles": 5
+    },
+    
+    "categories": {
+      "generation": true,
+      "validation": true,
+      "deployment": true,
+      "errors": true
+    }
+  },
+  
+  "backup": {
+    "enabled": true,
+    "directory": "backups",
+    "retention": {
+      "days": 30,
+      "maxFiles": 10
+    },
+    
+    "include": [
+      "themes/**",
+      "config/**",
+      "templates/**"
+    ],
+    
+    "exclude": [
+      "node_modules/**",
+      "vendor/**",
+      "logs/**",
+      "cache/**"
+    ]
+  }
+}

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Componentes HTML para Mapeamento</title>
+    <style>
+        /* Estilos de exemplo para demonstrar os componentes */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg');
+            background-size: cover;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+        
+        .service-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonials-slider {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .testimonial-item {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+        
+        .team-member {
+            text-align: center;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stats-section {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .cta-section {
+            background: #3498db;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- COMPONENTE: Hero Section -->
+<!-- MAPEAMENTO: hero_section -->
+<!-- CAMPOS: hero_title, hero_subtitle, hero_background_image, hero_cta_text, hero_cta_link -->
+<section class="hero-section" id="hero">
+    <div class="container">
+        <h1 class="hero-title">Bem-vindos à Nossa Empresa</h1>
+        <p class="hero-subtitle">Soluções inovadoras para transformar seu negócio e alcançar resultados extraordinários</p>
+        <a href="#servicos" class="btn btn-primary hero-cta">Conheça Nossos Serviços</a>
+        
+        <!-- Campo opcional para vídeo -->
+        <div class="hero-video" style="display: none;">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- COMPONENTE: Services Grid -->
+<!-- MAPEAMENTO: services_section -->
+<!-- CAMPOS: services_title, services_subtitle, services_items (repeater) -->
+<section class="services-section" id="servicos">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="services-title">Nossos Serviços</h2>
+            <p class="services-subtitle">Oferecemos soluções completas para o seu negócio</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- ITEM REPETÍVEL: service_item -->
+            <!-- CAMPOS: service_icon, service_title, service_description, service_link -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="service-title">Desenvolvimento Web</h3>
+                <p class="service-description">Criamos sites modernos, responsivos e otimizados para conversão.</p>
+                <a href="/servicos/desenvolvimento-web" class="service-link">Saiba Mais</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="service-title">Aplicativos Mobile</h3>
+                <p class="service-description">Desenvolvemos apps nativos e híbridos para iOS e Android.</p>
+                <a href="/servicos/apps-mobile" class="service-link">Saiba Mais</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="service-title">Marketing Digital</h3>
+                <p class="service-description">Estratégias completas para aumentar sua presença online.</p>
+                <a href="/servicos/marketing-digital" class="service-link">Saiba Mais</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPONENTE: About Section -->
+<!-- MAPEAMENTO: about_section -->
+<!-- CAMPOS: about_title, about_content, about_image, about_stats (repeater) -->
+<section class="about-section" id="sobre">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="about-title">Sobre Nossa Empresa</h2>
+                <div class="about-content">
+                    <p>Com mais de 10 anos de experiência no mercado, somos especialistas em transformar ideias em soluções digitais inovadoras.</p>
+                    <p>Nossa equipe multidisciplinar trabalha com as mais modernas tecnologias para entregar resultados que superam expectativas.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="about-image.jpg" alt="Sobre a empresa" class="about-image">
+            </div>
+        </div>
+        
+        <!-- SUBCOMPONENTE: Statistics -->
+        <!-- CAMPOS: stat_number, stat_label, stat_suffix -->
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">150</span><span class="stat-suffix">+</span>
+                    <p class="stat-label">Projetos Concluídos</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98</span><span class="stat-suffix">%</span>
+                    <p class="stat-label">Clientes Satisfeitos</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10</span><span class="stat-suffix">+</span>
+                    <p class="stat-label">Anos de Experiência</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24</span><span class="stat-suffix">h</span>
+                    <p class="stat-label">Suporte Técnico</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPONENTE: Team Section -->
+<!-- MAPEAMENTO: team_section -->
+<!-- CAMPOS: team_title, team_members (repeater) -->
+<section class="team-section" id="equipe">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="team-title">Nossa Equipe</h2>
+            <p class="team-subtitle">Conheça os profissionais que fazem a diferença</p>
+        </div>
+        
+        <div class="team-grid">
+            <!-- ITEM REPETÍVEL: team_member -->
+            <!-- CAMPOS: member_photo, member_name, member_position, member_bio, member_social -->
+            <div class="team-member">
+                <img src="team-member-1.jpg" alt="João Silva" class="member-photo">
+                <div class="member-info">
+                    <h3 class="member-name">João Silva</h3>
+                    <p class="member-position">CEO & Fundador</p>
+                    <p class="member-bio">Especialista em estratégia digital com mais de 15 anos de experiência.</p>
+                    <div class="member-social">
+                        <a href="https://linkedin.com/in/joaosilva" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/joaosilva" class="social-link twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="mailto:joao@empresa.com" class="social-link email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <img src="team-member-2.jpg" alt="Maria Santos" class="member-photo">
+                <div class="member-info">
+                    <h3 class="member-name">Maria Santos</h3>
+                    <p class="member-position">Diretora de Tecnologia</p>
+                    <p class="member-bio">Desenvolvedora full-stack apaixonada por inovação e tecnologias emergentes.</p>
+                    <div class="member-social">
+                        <a href="https://linkedin.com/in/mariasantos" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/mariasantos" class="social-link github">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPONENTE: Testimonials Slider -->
+<!-- MAPEAMENTO: testimonials_section -->
+<!-- CAMPOS: testimonials_title, testimonials_background, show_testimonials -->
+<section class="testimonials-section" id="depoimentos">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="testimonials-title">O Que Nossos Clientes Dizem</h2>
+        </div>
+        
+        <div class="testimonials-slider">
+            <!-- ITEM REPETÍVEL: testimonial_item (vem do CPT testimonials) -->
+            <!-- CAMPOS: client_name, client_position, client_company, client_photo, testimonial_text, rating -->
+            <div class="testimonial-item active">
+                <div class="testimonial-content">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="testimonial-text">
+                        "Trabalho excepcional! A equipe entregou exatamente o que precisávamos, no prazo e com qualidade superior."
+                    </blockquote>
+                    <div class="client-info">
+                        <img src="client-1.jpg" alt="Ana Costa" class="client-photo">
+                        <div class="client-details">
+                            <h4 class="client-name">Ana Costa</h4>
+                            <p class="client-position">Diretora de Marketing</p>
+                            <p class="client-company">TechCorp Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-item">
+                <div class="testimonial-content">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="testimonial-text">
+                        "Profissionais altamente qualificados. Nosso site teve um aumento de 300% nas conversões."
+                    </blockquote>
+                    <div class="client-info">
+                        <img src="client-2.jpg" alt="Carlos Oliveira" class="client-photo">
+                        <div class="client-details">
+                            <h4 class="client-name">Carlos Oliveira</h4>
+                            <p class="client-position">CEO</p>
+                            <p class="client-company">Inovação Digital</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Controles do slider -->
+        <div class="slider-controls">
+            <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <!-- Indicadores -->
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+        </div>
+    </div>
+</section>
+
+<!-- COMPONENTE: Contact Form -->
+<!-- MAPEAMENTO: contact_section -->
+<!-- CAMPOS: form_title, form_description, form_shortcode -->
+<section class="contact-section" id="contato">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="form-title">Entre em Contato</h2>
+                <p class="form-description">Pronto para transformar sua ideia em realidade? Vamos conversar!</p>
+                
+                <!-- Formulário que será substituído por shortcode do Contact Form 7 -->
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nome *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <select id="subject" name="subject">
+                            <option value="">Selecione um assunto</option>
+                            <option value="website">Desenvolvimento de Website</option>
+                            <option value="app">Aplicativo Mobile</option>
+                            <option value="marketing">Marketing Digital</option>
+                            <option value="other">Outro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+            
+            <div class="col-md-6">
+                <!-- SUBCOMPONENTE: Contact Info -->
+                <!-- CAMPOS: company_address, company_phone, company_email, company_hours -->
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-details">
+                            <h4>Endereço</h4>
+                            <p class="company-address">Rua das Flores, 123<br>Centro, São Paulo - SP<br>01234-567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-details">
+                            <h4>Telefone</h4>
+                            <p class="company-phone">(11) 99999-9999</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-details">
+                            <h4>E-mail</h4>
+                            <p class="company-email">contato@empresa.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-details">
+                            <h4>Horário de Funcionamento</h4>
+                            <p class="company-hours">Segunda a Sexta: 9h às 18h<br>Sábado: 9h às 12h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SUBCOMPONENTE: Map -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6333!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzcnNTkuOSJX!5e0!3m2!1spt-BR!2sbr!4v1234567890" 
+                            width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPONENTE: CTA Section -->
+<!-- MAPEAMENTO: cta_section -->
+<!-- CAMPOS: cta_title, cta_subtitle, cta_button_text, cta_button_link, cta_background -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Pronto para Começar seu Projeto?</h2>
+            <p class="cta-subtitle">Entre em contato conosco hoje mesmo e descubra como podemos ajudar seu negócio a crescer.</p>
+            <a href="#contato" class="btn btn-secondary cta-button">Solicitar Orçamento</a>
+        </div>
+    </div>
+</section>
+
+<!-- COMPONENTE: Portfolio Grid (para página de portfólio) -->
+<!-- MAPEAMENTO: portfolio_section -->
+<!-- CAMPOS: portfolio_title, portfolio_filter, portfolio_items (do CPT) -->
+<section class="portfolio-section" id="portfolio" style="display: none;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="portfolio-title">Nosso Portfólio</h2>
+            <p class="portfolio-subtitle">Conheça alguns dos nossos trabalhos</p>
+        </div>
+        
+        <!-- Filtros de categoria -->
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="website">Websites</button>
+            <button class="filter-btn" data-filter="app">Apps</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+        </div>
+        
+        <div class="portfolio-grid">
+            <!-- ITEM REPETÍVEL: portfolio_item (do CPT portfolio) -->
+            <!-- CAMPOS: project_title, project_image, project_category, project_url, project_description -->
+            <div class="portfolio-item" data-category="website">
+                <div class="portfolio-image">
+                    <img src="portfolio-1.jpg" alt="Projeto E-commerce">
+                    <div class="portfolio-overlay">
+                        <h3 class="project-title">E-commerce Moderno</h3>
+                        <p class="project-category">Website</p>
+                        <div class="portfolio-links">
+                            <a href="portfolio-1-full.jpg" class="portfolio-link lightbox">
+                                <i class="fas fa-search-plus"></i>
+                            </a>
+                            <a href="/portfolio/ecommerce-moderno" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="app">
+                <div class="portfolio-image">
+                    <img src="portfolio-2.jpg" alt="App de Delivery">
+                    <div class="portfolio-overlay">
+                        <h3 class="project-title">App de Delivery</h3>
+                        <p class="project-category">Aplicativo</p>
+                        <div class="portfolio-links">
+                            <a href="portfolio-2-full.jpg" class="portfolio-link lightbox">
+                                <i class="fas fa-search-plus"></i>
+                            </a>
+                            <a href="/portfolio/app-delivery" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// JavaScript para demonstrar funcionalidades que serão convertidas
+
+// Slider de depoimentos
+function initTestimonialsSlider() {
+    const slides = document.querySelectorAll('.testimonial-item');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+    }
+    
+    // Auto-play
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }, 5000);
+}
+
+// Filtro de portfólio
+function initPortfolioFilter() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.filter;
+            
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            portfolioItems.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// Animação de contadores
+function initCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.textContent);
+                let current = 0;
+                const increment = target / 100;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current);
+                }, 20);
+            }
+        });
+    });
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+// Smooth scroll para links internos
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Inicializar todas as funcionalidades
+document.addEventListener('DOMContentLoaded', function() {
+    initTestimonialsSlider();
+    initPortfolioFilter();
+    initCounters();
+    initSmoothScroll();
+});
+</script>
+
+</body>
+</html>
+
+<!-- 
+NOTAS PARA MAPEAMENTO:
+
+1. COMPONENTES IDENTIFICADOS:
+   - Hero Section (hero_section)
+   - Services Grid (services_section)
+   - About Section (about_section)
+   - Team Section (team_section)
+   - Testimonials Slider (testimonials_section)
+   - Contact Form (contact_section)
+   - CTA Section (cta_section)
+   - Portfolio Grid (portfolio_section)
+   - Statistics (stats_section)
+
+2. CAMPOS CUSTOMIZADOS NECESSÁRIOS:
+   - Textos editáveis (títulos, subtítulos, descrições)
+   - Imagens (backgrounds, fotos, logos)
+   - Links (CTAs, redes sociais, URLs)
+   - Repetidores (serviços, membros da equipe, estatísticas)
+   - Configurações (cores, layouts, opções de exibição)
+
+3. CUSTOM POST TYPES:
+   - Portfolio (projetos)
+   - Testimonials (depoimentos)
+   - Team Members (membros da equipe)
+
+4. FUNCIONALIDADES JAVASCRIPT:
+   - Slider de depoimentos
+   - Filtro de portfólio
+   - Animação de contadores
+   - Smooth scroll
+   - Menu mobile (não mostrado neste exemplo)
+
+5. INTEGRAÇÕES:
+   - Contact Form 7 (formulário de contato)
+   - Google Maps (mapa)
+   - Lightbox (galeria de imagens)
+   - Social Media (links das redes sociais)
+
+6. RESPONSIVIDADE:
+   - Grid layouts adaptativos
+   - Imagens responsivas
+   - Tipografia escalável
+   - Menu mobile
+
+7. SEO E ACESSIBILIDADE:
+   - Alt texts em imagens
+   - Estrutura semântica HTML5
+   - ARIA labels
+   - Meta tags
+-->
